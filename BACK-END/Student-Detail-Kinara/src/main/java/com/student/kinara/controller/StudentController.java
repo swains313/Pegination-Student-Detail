@@ -83,13 +83,27 @@ public class StudentController {
 //	        return ResponseEntity.ok(students);
 //	    }
 		
+		
+		//this doesnt ignore the case
+//	    @GetMapping("/search/{searchQuery}")
+//	    public Page<Student> searchStudents(@PathVariable("searchQuery") String searchQuery) {
+//	    	Pageable pageable=PageRequest.of(1, 5);
+//	    	List<Student> list=this.studentService.searchStudentsByQuery(searchQuery);
+//	    	Page<Student> page=new PageImpl<>(list);
+//			return page;
+//	    }
+	    
+		
+		
+		
+	    //this method ignore the case(SAUMYA=saumya)
 	    @GetMapping("/search/{searchQuery}")
-	    public Page<Student> searchStudents(@PathVariable("searchQuery") String searchQuery) {
-	    	Pageable pageable=PageRequest.of(1, 5);
-	    	List<Student> list=this.studentService.searchStudentsByQuery(searchQuery);
-	    	Page<Student> page=new PageImpl<>(list);
+	    public Page<Student> searchStudents(@PathVariable("searchQuery") String searchQuery,Integer pages) {
+	    	Pageable pageable=PageRequest.of(0, 5);
+	    	Page<Student> page=this.studentService.searchNameIgnoreTheCase(searchQuery, pageable);
 			return page;
 	    }
+	    
 	    
 
 	    
