@@ -36,6 +36,11 @@ public class StudentService {
 	  public List<Student> searchStudentsByQuery(String query) {
 	        return studentRepository.findByNameContaining(query);
 	    }
+		  
+	public Page<Student> searchNameIgnoreTheCase(String name,Pageable pageable)
+	  {
+		return this.studentRepository.findByNameContainingIgnoreCase(name, pageable);
+	  }
 	  
 
 
