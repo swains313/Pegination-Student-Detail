@@ -25,6 +25,9 @@ public interface StudentRepository extends MongoRepository<Student, String>{
 	 List<Student> findByNameContaining(String query);
 	
 
+	Page<Student> findByNameContainingIgnoreCase(String query, Pageable pageable);
+	
+
 
 	
 
